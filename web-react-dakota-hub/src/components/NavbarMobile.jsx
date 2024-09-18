@@ -41,7 +41,7 @@ const NavbarMobile = ({ navItems, isOpen, toggleMobileNav }) => {
         <div className="fixed inset-0 z-50">
           {/* Fundo escuro semitransparente que cobre toda a tela. Fecha o menu ao clicar nele */}
           <div
-            className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 z-40"
+            className="fixed top-0 left-0 w-full h-full z-40"
             onClick={toggleMobileNav}
           />
           {/* Sidebar que contém os itens de navegação */}

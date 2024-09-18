@@ -19,7 +19,7 @@ const NavbarDesktop = ({ navItems }) => {
       <div className="container mx-auto flex justify-between items-center h-20 px-4">
         
         {/* Seção do logotipo e título */}
-        <div className="flex items-center  from-green-400 to-blue-500 p-4 rounded-lg shadow-lg">
+        <div className="flex items-center to-blue-500 p-4 ">
         <img src={logo} alt="gov.br" className="h-20 mr-4" /> {/* Exibe o logotipo com altura definida */}
         <h1 className="text-3xl font-extrabold text-white tracking-wide drop-shadow-lg">
             FIND YOUR AI HERE
