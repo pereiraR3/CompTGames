@@ -1,0 +1,6 @@
+@web_api_dakota_HostAddress = http://localhost:5074
+
+GET {{web_api_dakota_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
