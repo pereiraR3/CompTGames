@@ -1,19 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace web_api_dakota.Models.Organization
-{
-    public record OrganizationRequestDTO
-    (
+namespace web_api_dakota.Models.Organization;
 
-        string Name, 
+public record OrganizationRequestDTO
+(
 
-        string Website,
+    string Name, 
 
-        byte[] Logo 
+    string Website,
 
-    );
+    byte[] Logo
+    
+);
         
-}

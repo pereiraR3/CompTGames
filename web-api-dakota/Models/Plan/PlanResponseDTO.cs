@@ -4,8 +4,10 @@ public record PlanResponseDTO
 (
     int Id,
     
+    int AiId,
+    
     double Price, 
     
-    DateTime Time
+    int Time
     
 );

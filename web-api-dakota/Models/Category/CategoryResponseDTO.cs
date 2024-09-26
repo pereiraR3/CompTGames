@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using web_api_dakota.Models.AI;
 
-namespace web_api_dakota.Models.Category
-{
-    public record CategoryResponseDTO
-    (
-        int id,
+namespace web_api_dakota.Models.Category;
 
-        String Name,
+public record CategoryResponseDTO
+(
+    int Id,
 
-        String Description
+    String Name,
 
-    );
+    String Description,
 
-}
+    List<AiModel> AiModels
+    
+);
+

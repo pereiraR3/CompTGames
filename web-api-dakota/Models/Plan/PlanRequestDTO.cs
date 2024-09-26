@@ -2,8 +2,10 @@ namespace web_api_dakota.Models.Plan;
 
 public record PlanRequestDTO
 (
+        int AiId,
+        
         double Price,
         
-        DateTime Time
+        int Time
         
 );

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web-api-dakota", "web-api-dakota.csproj", "{66FB9115-B702-4CA2-A008-8538FB2D19F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web-api-dakota.Tests", "..\web-api-dakota.Tests\web-api-dakota.Tests.csproj", "{F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{66FB9115-B702-4CA2-A008-8538FB2D19F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66FB9115-B702-4CA2-A008-8538FB2D19F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66FB9115-B702-4CA2-A008-8538FB2D19F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

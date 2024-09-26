@@ -1,21 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using web_api_dakota.Models.User;
 
-namespace web_api_dakota.Models.User
-{
-    public record UserResponseDTO
-    (
+namespace web_api_dakota.Models.User;
+
+public record UserResponseDTO
+(
         
-        int Id,
+    int Id,
+    
+    string Username,
 
-        string Username,
+    string Password,
+    
+    string Email,
 
-        string Password,
-
-        string[] Role
-
-    );
-}
+    List<UserRole> Roles
+    
+);
