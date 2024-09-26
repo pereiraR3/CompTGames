@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestProjectMapping/=66FB9115_002DB702_002D4CA2_002DA008_002D8538FB2D19F9/@EntryIndexedValue">F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestTemplateMapping/=xUnit/@EntryIndexedValue">33ff99d8-b1ad-4ed5-a4fd-376b97c2c841</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0998ab77_002Dc0e9_002D490d_002D8043_002D16891807c8e5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CategoryRepositoryTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081::net8.0::web_api_dakota.Tests.Controllers.UserControllerTest.Create_ShoulReturnCreatedAtAction_WhenCalled&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::F8F2BE79-3E6A-42CB-B1A7-9DB5CDA42081::net8.0::web_api_dakota.Tests.Controllers.UserControllerTest.Create_ShoulReturnBadRequest_WhenUserRequestIsNull&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

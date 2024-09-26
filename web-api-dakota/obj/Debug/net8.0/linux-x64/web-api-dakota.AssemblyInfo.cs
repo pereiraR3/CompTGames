@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("web-api-dakota")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95a7cb74cca275d5ded81836c44c33c13214d7da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95e532d24d37a9186c06ffd477046ac3bf102119")]
 [assembly: System.Reflection.AssemblyProductAttribute("web-api-dakota")]
 [assembly: System.Reflection.AssemblyTitleAttribute("web-api-dakota")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
