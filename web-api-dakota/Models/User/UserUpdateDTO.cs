@@ -6,8 +6,6 @@ public record UserUpdateDTO(
 
     string Password,
     
-    string Email,
-
-    List<UserRole> Roles
+    string Email
     
 );

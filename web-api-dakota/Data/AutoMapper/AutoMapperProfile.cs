@@ -1,4 +1,5 @@
 using AutoMapper;
+using web_api_dakota.Models.AI;
 using web_api_dakota.Models.Category;
 using web_api_dakota.Models.Organization;
 using web_api_dakota.Models.Plan;
@@ -11,28 +12,45 @@ public class AutoMapperProfile : Profile
     public AutoMapperProfile()
     {
         
-        // Mapeamento de UserModel para UserResponseDTO (do domínio para o DTO de resposta)
-        CreateMap<UserModel, UserResponseDTO>();
+        // Mapped UserModel
+        
+        CreateMap<UserModel, UserResponseDTO>()
+            .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => src.RoleModels));
+        
         CreateMap<UserUpdateDTO, UserModel>()
             .ForMember(dest => dest.Id,
                 opt => opt.Ignore())  // Ignora o mapeamento do Id, já que ele não é alterado no update.
             .ForMember(dest => dest.Password,
                 opt => opt
                     .MapFrom(src => HashPassword(src.Password))); // Hash da senha
+        
+        // Mapped OrganizationModel
+        
+        CreateMap<OrganizationResponseDTO, OrganizationModel>();
+        
+        CreateMap<OrganizationModel, OrganizationResponseDTO>()
+            .ForMember(dest => dest.AiModels, opt => opt.MapFrom(src => src.AiModels));
+        
+        // Mapped AiModel
 
-        // Mapeamento de CategoryModel para CategoryResponseDTO
-        CreateMap<CategoryModel, CategoryResponseDTO>();
+        CreateMap<AiRequestDTO, AiModel>();
+        
+        CreateMap<AiModel, AiResponseDTO>()
+            .ForMember(dest => dest.Organization, opt => opt.MapFrom(src => src.Organization))
+            .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.CategoryModels));
 
-        // Mapeamento de OrganizationModel para OrganizationResponseDTO
-        CreateMap<OrganizationModel, OrganizationResponseDTO>();
-
-        // Mapeamento de PlanModel para PlanResponseDTO
+        // Mapped PlanModel
+        
         CreateMap<PlanModel, PlanResponseDTO>();
         
-        // Mapeamento de CategoryRequestDTO para CategoryModel (para criação e atualização)
-        CreateMap<CategoryRequestDTO, CategoryModel>();
+        // Mapped CategoryModel
+        
+        CreateMap<CategoryModel, CategoryResponseDTO>()
+            .ForMember(dest => dest.AiModels, opt => opt.MapFrom(src => src.AiModels));
 
-        // O mapeamento de atualização deve ignorar campos nulos (Partial Update)
+        CreateMap<CategoryResponseDTO, CategoryModel>()
+            .ForMember(dest => dest.AiModels, opt => opt.Ignore()); // Ignorando o mapeamento de AiModels para evitar loops
+
         CreateMap<CategoryUpdateDTO, CategoryModel>()
             .ForAllMembers(
                 opts => opts.Condition(

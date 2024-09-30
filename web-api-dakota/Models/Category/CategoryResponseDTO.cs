@@ -10,7 +10,7 @@ public record CategoryResponseDTO
 
     String Description,
 
-    List<AiModel> AiModels
+    List<AiResponseDTO>? AiModels
     
 );
 

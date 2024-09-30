@@ -9,6 +9,7 @@ public class PlanModel
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id {get; private set;}
     
     [Required(ErrorMessage = "The field AiId is required")]

@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
+using web_api_dakota.Models.Roles;
 
 namespace web_api_dakota.Models.User;
 
@@ -11,6 +10,7 @@ public class UserModel
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; private set; }
     
     [Required(ErrorMessage = "Username is required")]
@@ -29,8 +29,8 @@ public class UserModel
     [Column("email")]
     public string Email { get; private set; }
     
-    [Required(ErrorMessage = "At least one role is required")]
-    public List<UserRole> Roles { get; private set; }
+    [JsonIgnore]
+    public List<RoleModel> RoleModels { get; private set; } = new List<RoleModel>();
 
     public UserModel() { }
         
@@ -42,8 +42,7 @@ public class UserModel
         this.Password = request.Password;
 
         this.Email = request.Email;
-
-        this.Roles = request.Roles.Select(role => (UserRole)role).ToList();
+        
     }
     
     // Método para definir ou alterar o nome de usuário, com validação
@@ -77,24 +76,15 @@ public class UserModel
         Email = email;
     }
 
-    // Método para adicionar um papel ao usuário, garantindo que pelo menos um papel seja atribuído
-    public void AddRole(UserRole role)
+    public void AddRole(RoleModel role)
     {
         if (role == null)
         {
             throw new ArgumentException("Role cannot be null.");
         }
-        Roles.Add(role);
+        RoleModels.Add(role);
     }
-
-    // Método para remover um papel do usuário, caso necessário
-    public void RemoveRole(UserRole role)
-    {
-        if (Roles.Contains(role))
-        {
-            Roles.Remove(role);
-        }
-    }
+    
 
     // Simulação de hash de senha (você deve usar uma solução como BCrypt ou SHA-256)
     private string HashPassword(string password)

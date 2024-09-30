@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using web_api_dakota.Models.AI;
+using web_api_dakota.Services.Interfaces;
 
 namespace web_api_dakota.Models.Organization;
 
@@ -12,6 +13,7 @@ public class OrganizationModel
         
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; private set; }
     
     [Required(ErrorMessage = "Name is required")]
@@ -24,7 +26,7 @@ public class OrganizationModel
     [Column("website")]
     public string Website { get; private set; }
 
-    // [Required(ErrorMessage = "Address is required")]
+    [Required(ErrorMessage = "Logo is required")]
     [Column("logo")]
     public byte[] Logo { get; private set; }
     

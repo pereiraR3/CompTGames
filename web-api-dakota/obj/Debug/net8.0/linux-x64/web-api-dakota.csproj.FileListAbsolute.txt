@@ -169,3 +169,7 @@
 /home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota/obj/Debug/net8.0/linux-x64/web-api-dakota.genruntimeconfig.cache
 /home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota/obj/Debug/net8.0/linux-x64/ref/web-api-dakota.dll
 /home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota/bin/Debug/net8.0/linux-x64/Swashbuckle.AspNetCore.Annotations.dll
+/home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota/bin/Debug/net8.0/linux-x64/Microsoft.AspNetCore.JsonPatch.dll
+/home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota/bin/Debug/net8.0/linux-x64/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota/bin/Debug/net8.0/linux-x64/Newtonsoft.Json.dll
+/home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota/bin/Debug/net8.0/linux-x64/Newtonsoft.Json.Bson.dll

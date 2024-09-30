@@ -7,8 +7,5 @@ public record UserRequestDTO
         
     string Password,
     
-    string Email,
-
-    List<UserRole> Roles
-    
+    string Email
 );

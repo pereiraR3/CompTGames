@@ -13,6 +13,6 @@ public record  OrganizationResponseDTO
 
     byte[] Logo,
         
-    List<AiModel> AiModels
+    List<AiResponseDTO>? AiModels
     
 );

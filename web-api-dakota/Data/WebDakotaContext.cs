@@ -3,6 +3,7 @@ using web_api_dakota.Models.AI;
 using web_api_dakota.Models.Category;
 using web_api_dakota.Models.Organization;
 using web_api_dakota.Models.Plan;
+using web_api_dakota.Models.Roles;
 using web_api_dakota.Models.User;
 
 namespace web_api_dakota.Data;
@@ -23,6 +24,8 @@ public class WebDakotaContext : DbContext
     public DbSet<PlanModel> PlanModels { get; set; }
     
     public DbSet<AiModel> AiModels { get; set; }
+    
+    public DbSet<RoleModel> RoleModels { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -6,11 +6,30 @@ using web_api_dakota.Services;
 using web_api_dakota.Services.Interfaces;
 using AutoMapper;
 using web_api_dakota.Middleware;
+using web_api_dakota.Utils.Scheduled;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:5074") // Domain allowed
+                .AllowAnyHeader() // Allowed any header
+                .AllowAnyMethod() // Allowed any method (GET, POST, PUT, DELETE, etc)
+                .AllowCredentials(); // Allowed sending of the credentials 
+        });
+});
+
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+    });
+
 
 // Configurar Swagger para documentação da API
 builder.Services.AddEndpointsApiExplorer();
@@ -22,13 +41,24 @@ builder.Services.AddEntityFrameworkSqlServer()
         options => options.UseSqlServer(builder.Configuration.GetConnectionString("Database"))
     );
 
+builder.Services.AddScoped<IAiModelRepository, AiModelRepository>();
+builder.Services.AddScoped<IAiModelService, AiModelService>();
+
+builder.Services.AddScoped<IUserModelRepository, UserModelRepository>();
+builder.Services.AddScoped<IUserModelService, UserModelService>();
+
+builder.Services.AddScoped<IDbService, DbService>();
+
 // Injetar o repositório genérico e o serviço genérico no contêiner de dependência
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>)); 
 builder.Services.AddScoped(typeof(IService<,,,>), typeof(Service<,,,>));
 
-// Registrar AutoMapper
+// Register AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// Register the service scheduled
+builder.Services.AddHostedService<ScheduledTaskDbService>();
 
 // Habilitando as anotações do Swagger
 builder.Services.AddSwaggerGen(c =>
@@ -46,10 +76,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Middleware para CORS (se necessário)
-// app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
 // app.UseMiddleware(typeof(GlobalHandlerException));
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthorization();
 

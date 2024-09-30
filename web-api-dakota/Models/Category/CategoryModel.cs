@@ -2,14 +2,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using web_api_dakota.Models.AI;
+using web_api_dakota.Services.Interfaces;
 
 namespace web_api_dakota.Models.Category;
 
 [Table("categories")]
-public class CategoryModel
+public class CategoryModel : IRelatedEntityHasOne<AiModel>
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; private set; } 
 
     [Required]
@@ -20,8 +22,7 @@ public class CategoryModel
     [StringLength(80, ErrorMessage = "A descrição não pode exceder 80 caracteres.")]
     public string Description { get; private set; }
 
-    [JsonIgnore]
-    public ICollection<AiModel> AiModels { get; private set; } = new List<AiModel>(); 
+    public List<AiModel> AiModels { get; private set; } = new List<AiModel>(); 
 
     public CategoryModel() { }
 
@@ -56,4 +57,16 @@ public class CategoryModel
         }
         Description = description;
     }
+    
+    
+    public void SetParent(AiModel aiModel)
+    {
+        if (aiModel == null)
+        {
+            throw new ArgumentException("AI Model cannot be null.");
+        }
+
+        AiModels.Add(aiModel);
+    }
+    
 }

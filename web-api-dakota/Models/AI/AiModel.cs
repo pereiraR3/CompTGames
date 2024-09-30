@@ -3,15 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using web_api_dakota.Models.Category;
 using web_api_dakota.Models.Organization;
+using web_api_dakota.Services.Interfaces;
 
 namespace web_api_dakota.Models.AI;
 
 [Table("ais")]
-public class AiModel
+public class AiModel : IRelatedEntityHasOne<OrganizationModel>
 {
         
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; private set; }
     
     [Required(ErrorMessage = "The field organizationId is required")]
@@ -29,7 +31,7 @@ public class AiModel
     public virtual OrganizationModel Organization { get; private set; }
     
     [JsonIgnore]
-    public ICollection<CategoryModel> CategoryModels { get; private set; } = new List<CategoryModel>();
+    public virtual ICollection<CategoryModel> CategoryModels { get; private set; } = new List<CategoryModel>();
     
     public AiModel() { } 
     
@@ -80,6 +82,18 @@ public class AiModel
         
         (CategoryModels as List<CategoryModel>)?.Add(category);
     }
-    
+
+
+    public void SetParent(OrganizationModel parent)
+    {
+        if (parent == null)
+        {
+            throw new ArgumentException("Organization cannot be null.");
+        }
+
+        Organization = parent;
+        OrganizationId = parent.Id;
+        
+    }
     
 }

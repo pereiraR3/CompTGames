@@ -173,3 +173,6 @@
 /home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota.Tests/bin/Debug/net8.0/System.Text.Json.dll
 /home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota.Tests/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
 /home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota.Tests/bin/Debug/net8.0/Swashbuckle.AspNetCore.Annotations.dll
+/home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota.Tests/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota.Tests/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/phost/Documents/projectGithub/Dakota-Hub/web-api-dakota.Tests/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
