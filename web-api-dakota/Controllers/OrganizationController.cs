@@ -27,7 +27,7 @@ public class OrganizationController : ControllerBase
     /// <response code="201">Organization successfully created.</response>
     /// <response code="400">Invalid request or incomplete data.</response>
     /// <response code="409">Invalid request duplicate value.</response>
-    [HttpPost]
+    [HttpPost("create")]
     [SwaggerOperation(Summary = "Creates a new organization", Description = "Creates a new organization based on the provided data.")]
     [SwaggerResponse(201, "Organization successfully created", typeof(OrganizationResponseDTO))]
     [SwaggerResponse(400, "Invalid or incomplete data")]
@@ -54,13 +54,13 @@ public class OrganizationController : ControllerBase
     /// <returns>Returns the details of the requested organization.</returns>
     /// <response code="200">Organization successfully found.</response>
     /// <response code="404">Organization not found.</response>
-    [HttpGet("{id}")]
+    [HttpGet("getById/{id}")]
     [SwaggerOperation(Summary = "Gets an organization by ID", Description = "Retrieves the details of a specific organization based on the provided ID.")]
     [SwaggerResponse(200, "Organization successfully found", typeof(OrganizationResponseDTO))]
     [SwaggerResponse(404, "Organization not found")]
     public async Task<ActionResult<OrganizationResponseDTO>> GetById(int id)
     {
-        var organizationResponseDto = await _service.GetByIdAsync(id);
+        var organizationResponseDto = await _service.GetByIdAsync(id, e => e.AiModels);
 
         if (organizationResponseDto == null)
             return NotFound();
@@ -74,7 +74,7 @@ public class OrganizationController : ControllerBase
     /// <returns>Returns the list of all organizations.</returns>
     /// <response code="200">List of organizations successfully retrieved.</response>
     /// <response code="204">No organizations found.</response>
-    [HttpGet]
+    [HttpGet("getAll")]
     [SwaggerOperation(Summary = "Lists all organizations", Description = "Retrieves the list of all registered organizations.")]
     [SwaggerResponse(200, "List of organizations successfully retrieved", typeof(IEnumerable<OrganizationResponseDTO>))]
     [SwaggerResponse(204, "No organizations found")]
@@ -96,7 +96,7 @@ public class OrganizationController : ControllerBase
     /// <returns>Returns the status of the operation.</returns>
     /// <response code="204">Organization successfully updated.</response>
     /// <response code="404">Organization not found.</response>
-    [HttpPut("{id}")]
+    [HttpPut("updateById/{id}")]
     [SwaggerOperation(Summary = "Updates an organization", Description = "Updates the data of an existing organization based on the provided data.")]
     [SwaggerResponse(204, "Organization successfully updated")]
     [SwaggerResponse(404, "Organization not found")]
@@ -117,7 +117,7 @@ public class OrganizationController : ControllerBase
     /// <returns>Returns the status of the operation.</returns>
     /// <response code="204">Organization successfully removed.</response>
     /// <response code="404">Organization not found.</response>
-    [HttpDelete("{id}")]
+    [HttpDelete("deleteById/{id}")]
     [SwaggerOperation(Summary = "Removes an organization", Description = "Removes a specific organization based on the provided ID.")]
     [SwaggerResponse(204, "Organization successfully removed")]
     [SwaggerResponse(404, "Organization not found")]
@@ -137,7 +137,7 @@ public class OrganizationController : ControllerBase
     /// <returns>Returns the status of the operation.</returns>
     /// <response code="204">All organizations successfully removed.</response>
     /// <response code="404">No organizations found for removal.</response>
-    [HttpDelete]
+    [HttpDelete("deleteAll")]
     [SwaggerOperation(Summary = "Removes all organizations", Description = "Removes all existing organizations from the system.")]
     [SwaggerResponse(204, "All organizations successfully removed")]
     [SwaggerResponse(404, "No organizations found for removal")]
